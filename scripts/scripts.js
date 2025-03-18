@@ -28,6 +28,13 @@ function buildHeroBlock(main) {
   }
 }
 
+function buildMagicPageTitleBlock(main) {
+  const firstTitle = main.querySelector('h1');
+  if (firstTitle) {
+    firstTitle.replaceWith(buildBlock('magic-page-title', { elems: [firstTitle.cloneNode(true)] }));
+  }
+}
+
 /**
  * load fonts.css and set a session storage flag
  */
@@ -47,6 +54,7 @@ async function loadFonts() {
 function buildAutoBlocks(main) {
   try {
     buildHeroBlock(main);
+    buildMagicPageTitleBlock(main);
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);
